@@ -46,13 +46,16 @@ public class TaskController {
         return new ApiResponce("not change");
     }
     @GetMapping("/search/{title}")
-      public ArrayList<Task> search(@PathVariable String title){
+      public ApiResponce search(@PathVariable String title){
         ArrayList<Task> searches = new ArrayList<>();
         for( Task task : tasks){
             if(task.getTitle().equalsIgnoreCase(title)){
-                searches.add(task);}
-        }
-        return searches;
+                searches.add(task);
+                return searches;
+            }
+        }return new ApiResponce (" not found");
+          
+        
       }
 
 }
